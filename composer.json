@@ -1,0 +1,22 @@
+{
+  "name": "codexten/yii-module-chat",
+  "type": "library",
+  "description": "chat module for yii 2.0 or higher",
+  "require": {
+    "codexten/yii-web": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "codexten\\yii\\modules\\chat\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    },
+    "sconfig-plugin": {
+      "moduleLocale": "config/moduleCountry.php",
+      "migrationNamespaces": "config/migrationNamespaces.php"
+    }
+  }
+}
