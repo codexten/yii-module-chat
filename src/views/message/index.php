@@ -40,7 +40,7 @@ $this->title = 'Messages';
                                 <p class="name"> <?= $contact->name ?></p>
                                 <p class="id">username : <?= $contact->username ?></p>
                             </li>
-                        
+
                         <?php endForeach; ?>
                     </ul>
 
@@ -87,7 +87,7 @@ $this->title = 'Messages';
 
                     <div class="no-messages">
 
-                        No Messages
+                        <h1 class="text-center">No Messages</h1>
 
                     </div>
 
