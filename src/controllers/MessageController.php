@@ -33,14 +33,14 @@ class MessageController extends \yii\web\Controller
             ])
             ->andWhere(['!=', $userClass::tableName() . '.id', UserHelper::getMyId()])
             ->all();
-        $fromUser = User::findOne(['id' => UserHelper::getMyId()]);
+        $fromUser = $userClass::findOne(['id' => UserHelper::getMyId()]);
 
         if ($id == null) {
             return $this->render('index', compact(['fromUser', 'contacts']));
         }
 
 
-        $toUser = User::findOne(['id' => $id]);
+        $toUser = $userClass::findOne(['id' => $id]);
         $model = new ChatMessage([
             'sender_id' => $fromUser->id,
             'receiver_id' => $toUser->id,
@@ -56,7 +56,7 @@ class MessageController extends \yii\web\Controller
                 ['sender_id' => $id, 'receiver_id' => UserHelper::getMyId()],
                 ['sender_id' => UserHelper::getMyId(), 'receiver_id' => $id],
             ])->limit(100)
-            ->orderBy(['created_at' => SORT_ASC])->all();
+            ->orderBy(['created_at' => SORT_DESC])->all();
 
         return $this->render('index', compact(['messages', 'fromUser', 'toUser', 'model', 'contacts']));
     }

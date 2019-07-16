@@ -3,6 +3,8 @@
 
 namespace codexten\yii\modules\chat\models;
 
+use yii\helpers\Url;
+
 /**
  * Trait UserTrait
  *
@@ -34,8 +36,8 @@ trait UserTrait
 //        return $this->username;
 //    }
 
-    public function getChatUrl()
+    public function getChatUrl(): string
     {
-        return ['/chat/message/index', 'id' => $this->id];
+        return Url::to(['/chat/message/index', 'id' => $this->id]);
     }
 }

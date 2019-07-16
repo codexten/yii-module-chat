@@ -24,31 +24,10 @@ $this->registerJs($script);
 
 <?php foreach ($messages as $message): ?>
 
-
-    <?php if ($message->sender_id == $fromUser->id): ?>
-
-        <div class="outgoing_msg">
-            <div class="sent_msg">
-                <p><?= $message->text ?></p>
-                <span class="time_date"> <?= Yii::$app->formatter->asDatetime($message->created_at) ?></span>
-            </div>
-        </div>
-
-
-    <?php else: ?>
-
-        <div class="incoming_msg">
-            <div class="received_msg">
-                <div class="received_withd_msg">
-
-                    <p><?= $message->text ?></p>
-                    <span class="time_date"> <?= Yii::$app->formatter->asDatetime($message->created_at) ?></span>
-                </div>
-            </div>
-        </div>
-
-
-    <?php endIf; ?>
+    <div class="single-message single-message-<?= $message->sender_id == $fromUser->id ? 'send' : 'received' ?>">
+        <p class="message-text"><?= $message->text ?></p>
+        <p class="message-time"><?= Yii::$app->formatter->asDatetime($message->created_at) ?></p>
+    </div>
 
 <?php endForeach; ?>
 
