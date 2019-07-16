@@ -3,7 +3,6 @@
 use codexten\yii\web\widgets\Page;
 use yii\web\View;
 use yii\widgets\ActiveForm;
-use yii\widgets\Pjax;
 
 /* @var $this View */
 /* @var $model \codexten\yii\modules\chat\models\ChatMessage */
@@ -21,86 +20,291 @@ $this->title = 'Messages';
     'title' => $this->title,
 ]) ?>
 
+<div class="chat">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="search">
 
-<div class="messaging">
-    <div class="inbox_msg">
-        <div class="inbox_people">
-            <div class="headind_srch">
-                <div class="recent_heading">
-                    <h4>Recent</h4>
-                </div>
-                <div class="srch_bar">
-                    <div class="stylish-input-group">
-                        <input type="text" class="search-bar" placeholder="Search">
-                        <span class="input-group-addon">
-                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span>
-                    </div>
-                </div>
+                <?php $form = ActiveForm::begin() ?>
+
+                <?php ActiveForm::end() ?>
+
             </div>
-            <div class="inbox_chat">
+            <div class="contacts">
 
-                <?php foreach ($contacts as $contact): ?>
-
-                    <div class="chat_list <?= $contact->id == $toUser->id ? 'active_chat' : '' ?>"
-                         style="cursor: pointer"
-                         onclick="location.href='<?= \yii\helpers\Url::to(['index', 'id' => $contact->id]) ?>';">
-                        <div class="chat_people">
-                            <div class="chat_img">
-                            </div>
-                            <div class="chat_ib">
-                                <h5><?= $contact->username ?></h5>
-                                <!--                                <p>Test, which is a new approach to have all solutions-->
-                                <!--                                    astrology under one roof.</p>-->
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endForeach; ?>
-
+                <ul>
+                    <li>
+                        Full Name
+                    </li>
+                    <li class="active">
+                        Full Name
+                    </li>
+                    <li>
+                        Full Name
+                    </li>
+                    <li>
+                        Full Name
+                    </li>
+                    <li>
+                        Full Name
+                    </li>
+                    <li>
+                        Full Name
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="mesgs">
-            <div class="msg_history">
+        <div class="col-md-8">
 
-                <?php if ($toUser): ?>
+            <?php if ($toUser): ?>
 
-                    <?= $this->render('index/_messages', $_params_) ?>
+                <div class="message-header">
+                    Full Name
+                </div>
+                <div class="send-message">
 
-                <?php endIf; ?>
+                    <?php $form = ActiveForm::begin() ?>
 
-            </div>
-            <div class="type_msg">
+                    <?= $form->field($model, 'text')->textarea()->label(false) ?>
 
-                <?php if ($toUser): ?>
+                    <?= \yii\helpers\Html::submitButton('Send') ?>
 
-                    <?php Pjax::begin(); ?>
+                    <?php ActiveForm::end() ?>
 
-                    <div class="input_msg_write">
+                </div>
+                <div class="messages">
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
 
-                        <?php $from = ActiveForm::begin() ?>
-
-                        <?= $from->field($model, 'text')
-                            ->textInput([
-                                'options' => [
-                                    'class' => 'write_msg',
-                                ],
-                            ])->label(false) ?>
-
-                        <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o"
-                                                                      aria-hidden="true"></i>
-                        </button>
-
-                        <?php ActiveForm::end() ?>
                     </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
 
-                    <?php Pjax::end(); ?>
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
 
-                <?php endIf; ?>
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                    <div class="single-message single-message-send">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+
+                    </div>
+                    <div class="single-message single-message-received">
+                        <p class="message-text">test test tes</p>
+                        <p class="message-time">2:40 pm</p>
+                    </div>
+                </div>
+
+            <?php else: ?>
+
+            <div class="no-messages">
+
+                No Messages
 
             </div>
+
+            <?php endIf; ?>
+
+
         </div>
     </div>
 </div>
+
 
 <?php $page->end() ?>
