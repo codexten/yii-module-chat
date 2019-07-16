@@ -15,8 +15,8 @@
     "branch-alias": {
       "dev-master": "2.0.x-dev"
     },
-    "sconfig-plugin": {
-      "moduleLocale": "config/moduleCountry.php",
+    "config-plugin": {
+      "moduleChat": "config/moduleChat.php",
       "migrationNamespaces": "config/migrationNamespaces.php"
     }
   }
