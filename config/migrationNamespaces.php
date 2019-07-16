@@ -1,3 +1,5 @@
 <?php
 
-return [];
+return [
+    'codexten\yii\modules\chat\migrations',
+];

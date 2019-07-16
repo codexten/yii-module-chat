@@ -1,4 +1,5 @@
 <?php
+
 namespace codexten\yii\modules\chat\migrations;
 
 use bubasuma\simplechat\migrations\Migration;
@@ -10,10 +11,6 @@ use bubasuma\simplechat\migrations\Migration;
  */
 class m151121_105453_message_table extends Migration
 {
-    const TABLE_USER = '{{%user}}';
-    const TABLE_USER_PROFILE = '{{%user_profile}}';
-    const TABLE_MESSAGE = '{{%message}}';
-
     public function getTableOptions()
     {
         $tableOptions = null;
@@ -26,31 +23,31 @@ class m151121_105453_message_table extends Migration
 
     public function up()
     {
-        $this->createTable(self::TABLE_MESSAGE, [
+        $this->createTable('{{%chat_message}}', [
             'id' => $this->bigPrimaryKey()->unsigned(),
-            'sender_id' => $this->integer()->unsigned()->notNull(),
-            'receiver_id' => $this->integer()->unsigned()->notNull(),
+            'sender_id' => $this->integer()->notNull(),
+            'receiver_id' => $this->integer()->notNull(),
             'text' => $this->string(1020)->notNull(),
             'is_new' => $this->boolean()->defaultValue(true),
             'is_deleted_by_sender' => $this->boolean()->defaultValue(false),
             'is_deleted_by_receiver' => $this->boolean()->defaultValue(false),
-            'created_at' => $this->dateTime()->notNull(),
+            'created_at' => $this->integer(),
         ], $this->tableOptions);
-        $tableName = $this->db->getSchema()->getRawTableName(self::TABLE_MESSAGE);
+        $tableName = $this->db->getSchema()->getRawTableName('{{%chat_message}}');
         $this->addForeignKey(
             "fk-$tableName-sender_id",
-            self::TABLE_MESSAGE,
+            '{{%chat_message}}',
             'sender_id',
-            self::TABLE_USER,
+            '{{%user}}',
             'id',
             'NO ACTION',
             'CASCADE'
         );
         $this->addForeignKey(
             "fk-$tableName-receiver_id",
-            self::TABLE_MESSAGE,
+            '{{%chat_message}}',
             'receiver_id',
-            self::TABLE_USER,
+            '{{%user}}',
             'id',
             'NO ACTION',
             'CASCADE'
@@ -59,6 +56,6 @@ class m151121_105453_message_table extends Migration
 
     public function down()
     {
-        $this->dropTable(self::TABLE_MESSAGE);
+        $this->dropTable('{{%chat_message}}');
     }
 }

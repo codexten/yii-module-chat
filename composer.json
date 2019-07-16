@@ -16,6 +16,7 @@
       "dev-master": "2.0.x-dev"
     },
     "config-plugin": {
+      "core": "config/core.php",
       "moduleChat": "config/moduleChat.php",
       "migrationNamespaces": "config/migrationNamespaces.php"
     }
