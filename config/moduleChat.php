@@ -4,7 +4,7 @@ return [
     'bootstrap' => ['chat'],
     'modules' => [
         'chat' => [
-            'class' => \yii\base\Module::class,
+            'class' => \codexten\yii\modules\chat\ChatModule::class,
             'controllerNamespace' => 'codexten\yii\modules\chat\controllers',
             'viewPath' => '@moduleChat/views',
             'layoutPath' => '@moduleChat/views/layouts',
@@ -12,7 +12,7 @@ return [
             'controllerMap' => [
                 'message' => [
                     'class' => \codexten\yii\modules\chat\controllers\MessageController::class,
-                    'layout' => 'chat'
+                    'layout' => 'chat',
                 ],
             ],
         ],

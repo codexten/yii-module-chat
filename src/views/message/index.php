@@ -3,13 +3,14 @@
 use codexten\yii\web\widgets\Page;
 use yii\web\View;
 use yii\widgets\ActiveForm;
+use codexten\gnt\site\modules\chat\models\User;
 
 /* @var $this View */
 /* @var $model \codexten\yii\modules\chat\models\ChatMessage */
 /* @var $messages \codexten\yii\modules\chat\models\ChatMessage[] */
-/* @var $fromUser \codexten\yii\modules\auth\models\User */
-/* @var $toUser \codexten\yii\modules\auth\models\User */
-/* @var $contacts \codexten\yii\modules\chat\models\User[] */
+/* @var $fromUser User */
+/* @var $toUser User */
+/* @var $contacts User[] */
 /* @var $_params_ array */
 
 $this->title = 'Messages';
@@ -31,27 +32,18 @@ $this->title = 'Messages';
 
             </div>
             <div class="contacts">
-
                 <ul>
-                    <li>
-                        Full Name
-                    </li>
-                    <li class="active">
-                        Full Name
-                    </li>
-                    <li>
-                        Full Name
-                    </li>
-                    <li>
-                        Full Name
-                    </li>
-                    <li>
-                        Full Name
-                    </li>
-                    <li>
-                        Full Name
-                    </li>
+
+                    <?php foreach ($contacts as $contact): ?>
+
+                        <li>
+                            <?= $contact->name ?>
+                        </li>
+
+                    <?php endForeach; ?>
                 </ul>
+
+
             </div>
         </div>
         <div class="col-md-8">
@@ -293,11 +285,11 @@ $this->title = 'Messages';
 
             <?php else: ?>
 
-            <div class="no-messages">
+                <div class="no-messages">
 
-                No Messages
+                    No Messages
 
-            </div>
+                </div>
 
             <?php endIf; ?>
 

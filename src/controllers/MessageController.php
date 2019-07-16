@@ -3,15 +3,25 @@
 namespace codexten\yii\modules\chat\controllers;
 
 use codexten\yii\modules\auth\helpers\UserHelper;
+use codexten\yii\modules\chat\ChatModule;
 use codexten\yii\modules\chat\models\ChatMessage;
 use codexten\yii\modules\chat\models\User;
 
+/**
+ * Class MessageController
+ *
+ * @package codexten\yii\modules\chat\controllers
+ *
+ * @property ChatModule $module
+ */
 class MessageController extends \yii\web\Controller
 {
     public function actionIndex($id = null)
     {
-        $contacts = User::find()
-            ->distinct([User::tableName() . '.id'])
+        $userClass = $this->module->userClass;
+
+        $contacts = $userClass::find()
+            ->distinct([$userClass::tableName() . '.id'])
             ->joinWith([
                 'sendMessages as sendMessages',
                 'receivedMessages as receivedMessages',
@@ -21,7 +31,7 @@ class MessageController extends \yii\web\Controller
                 ['receivedMessages.sender_id' => UserHelper::getMyId()],
                 ['sendMessages.receiver_id' => UserHelper::getMyId()],
             ])
-            ->andWhere(['!=', User::tableName() . '.id', UserHelper::getMyId()])
+            ->andWhere(['!=', $userClass::tableName() . '.id', UserHelper::getMyId()])
             ->all();
         $fromUser = User::findOne(['id' => UserHelper::getMyId()]);
 
